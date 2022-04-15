@@ -1,0 +1,24 @@
+server:
+  port: 8080 #Define porta que aplicação ira rodar
+
+spring:
+  application:
+    name: ead-api-gateway #Define nome da aplicação
+  cloud:
+    gateway:
+      routes:
+        - id: authuser-service
+          uri: lb://EAD-AUTHUSER-SERVICE #Nesse local passamos o Id definido no Eureka, e o prefixo lb(load balance)
+          predicates:
+            - Path=/ead-authuser/**
+        - id: authuser-service
+          uri: lb://EAD-COURSE-SERVICE #Nesse local passamos o Id definido no Eureka, e o prefixo lb(load balance)
+          predicates:
+            - Path=/ead-course/**
+
+eureka: #Configurações do Eureka
+  client:
+    service-url:
+      defaultZone: 'http://localhost:8761/eureka' #Endereço onde o eureka server está
+  instance:
+    hostname: localhost
