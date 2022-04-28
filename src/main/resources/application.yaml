@@ -11,10 +11,14 @@ spring:
           uri: lb://EAD-AUTHUSER-SERVICE #Nesse local passamos o Id definido no Eureka, e o prefixo lb(load balance)
           predicates:
             - Path=/ead-authuser/**
-        - id: authuser-service
+        - id: course-service
           uri: lb://EAD-COURSE-SERVICE #Nesse local passamos o Id definido no Eureka, e o prefixo lb(load balance)
           predicates:
             - Path=/ead-course/**
+        - id: config-server-service
+          uri: lb://EAD-CONFIG-SERVER #Nesse local passamos o Id definido no Eureka, e o prefixo lb(load balance)
+          predicates:
+            - Path=/ead-config-server/**
 
 eureka: #Configurações do Eureka
   client:
