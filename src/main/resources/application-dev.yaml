@@ -1,0 +1,9 @@
+spring:
+  config: #Configuração de conexão com o Config Server
+    import: 'configserver:' #O optional:, define que caso o config server não esteja disponível, será utilizado as configurações desse arquivo.
+  cloud:
+    config:
+      discovery:
+        service-id: ead-config-server
+      username: configserver
+      password: 'ead123cs'
